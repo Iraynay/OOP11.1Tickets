@@ -11,7 +11,7 @@ public class Ticket implements Comparable<Ticket> {
 
     @Override
     public String toString() {
-        return departureAirport + "-" + arrivalAirport + cost;
+        return departureAirport + "-" + arrivalAirport + ": " + cost;
     }
 
     public Ticket(int id, int cost, String departureAirport, String arrivalAirport, double travelTime) {

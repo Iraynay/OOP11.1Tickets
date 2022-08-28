@@ -33,9 +33,9 @@ public class Main {
 
         manager.findTickets("LED", "SCW");
         Ticket[] result1 = manager.findTickets("LED", "SCW");
-        System.out.println(Arrays.toString(result1));
+        System.out.println("FindTickets: " + Arrays.toString(result1));
         Ticket[] result2 = manager.allSortedTickets();
-        System.out.println(Arrays.toString(result2));
+        System.out.println("AllTickets" + Arrays.toString(result2));
 
     }
 }
