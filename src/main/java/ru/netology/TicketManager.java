@@ -11,6 +11,7 @@ public class TicketManager {
     }
 
     private Ticket[] tickets = new Ticket[0];
+    Ticket[] resultForFind = new Ticket[0];
 
     public void add(Ticket tickets) {
         repository.saveTicket(tickets);
@@ -19,19 +20,20 @@ public class TicketManager {
     public Ticket[] findTickets(String from, String to) {
         Ticket[] tickets = repository.findAll();
         for (Ticket ticketItem : tickets) {
- //           if (ticketItem.getArrivalAirport().equals(from) && ticketItem.getArrivalAirport().equals(to)) {
-           if (ticketItem.getDepartureAirport() == from && ticketItem.getArrivalAirport() == to) {
-                Ticket[] tmp = new Ticket[1];
-                for (int i = 0; i < tmp.length; i++) {
-                  tmp[i] = tickets [i];
-                }
-               tmp[tmp.length - 1] = ticketItem;
-               tmp = tickets;
+            if (ticketItem.getDepartureAirport() == from && ticketItem.getArrivalAirport() == to) {
+                int resultLength = resultForFind.length + 1;
+                Ticket[] tmp = new Ticket[resultLength];
+                System.arraycopy(resultForFind, 0, tmp, 0, resultForFind.length);
+
+                int lastIndex = tmp.length - 1;
+                tmp[lastIndex] = ticketItem;
+                resultForFind = tmp;
             }
         }
-        Arrays.sort(tickets);
-        return tickets;
+        Arrays.sort(resultForFind);
+        return resultForFind;
     }
+
 
     public Ticket[] allSortedTickets() {
         Ticket[] tickets = repository.findAll();
