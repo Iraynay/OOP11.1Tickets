@@ -5,12 +5,13 @@ import java.util.Objects;
 
 public class TicketManager {
     private TicketRepo repository;
+    private Ticket[] tickets = new Ticket[0];
 
     public TicketManager(TicketRepo repository) {
         this.repository = repository;
     }
 
-    private Ticket[] tickets = new Ticket[0];
+
 
     public void add(Ticket tickets) {
         repository.saveTicket(tickets);
