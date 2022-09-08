@@ -11,13 +11,13 @@ public class TicketManager {
     }
 
     private Ticket[] tickets = new Ticket[0];
-    Ticket[] resultForFind = new Ticket[0];
 
     public void add(Ticket tickets) {
         repository.saveTicket(tickets);
     }
 
     public Ticket[] findTickets(String from, String to) {
+        Ticket[] resultForFind = new Ticket[0];
         Ticket[] tickets = repository.findAll();
         for (Ticket ticketItem : tickets) {
             if (ticketItem.getDepartureAirport() == from && ticketItem.getArrivalAirport() == to) {
